@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="">
   <meta name="keywords" content="">
   
     <link rel="icon" href="">
   
     
-  <title>Hexo使用备忘 | Hexo</title>
+  <title>Hexo使用备忘 | lzhu&#39;s pub</title>
+  <meta name="description" content="">
   
 <link rel="stylesheet" href="/style.css">
 
@@ -24,7 +24,7 @@
   <header>
   <div class="header-container">
     <a class='logo' href="/">
-      <span>Hexo</span>
+      <span>lzhu's pub</span>
     </a>
     <ul class="right-header">
       
@@ -59,26 +59,41 @@
   <main id='post'>
   <div class="content">
     <article>
-        <section class="content markdown-body">
-          <h1>Hexo使用备忘</h1>
-          <div class='post-meta'>
-            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2020/03/11</time>
-            
-            
-          </div>
-          <ol>
+      <section class="content markdown-body">
+        <h1>
+          Hexo使用备忘
+        </h1>
+        <div class='post-meta'>
+          <i class="fa fa-calendar"
+            aria-hidden="true"></i> <time>
+            2020/03/11</time>
+          
+          
+          |
+          
+          <i class="fa fa-tag"
+            aria-hidden="true"></i>
+          
+          
+  <a href="/tags/#Hexo" class='tag'>Hexo</a>
+
+
+          
+        </div>
+        <p>万万没想到一小时后我竟不需要这个文章了。</p>
+<ol>
 <li><p>当我修改了_config.yml 后，想在本地看看效果时：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">//Hexo路径下</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//Hexo路径下</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>当我准备将它发布时：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean   //有时因为缓存问题，服务器更新不了主题</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 
-        </section>
+      </section>
     </article>
     
-        
+    
   </div>
   <aside>
     
@@ -90,10 +105,13 @@
   <footer>
   <div class="copyright">
     <div>
-      &copy; 2020 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+      &copy;
+      2020 | Powered by <a href="https://hexo.io"
+        target="_blank">Hexo</a>&nbsp
     </div>
     <div>
-      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath"
+        target="_blank">Aath</a>
     </div>
   </div>
 </footer>
@@ -101,64 +119,53 @@
 
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
-<script src="/lib/in-view.min.js"></script>
+<script src="/lib/ScrollMagic.min.js"></script>
 
 
 <script src="/lib/lodash.min.js"></script>
 
 <script>
-  var isDown = true
-  var oldY = 0
-  inView.offset(50)
+  document.body.addEventListener('touchstart', function () { });
 
-  document.body.addEventListener('touchstart', function(){});
-  
-  window.addEventListener('scroll', _.throttle(e => {
-    var currentY = window.scrollY
-    if((oldY - currentY) < 0) {
-      isDown = true
-    } else {
-      isDown = false
-    }
-    oldY = currentY
-  }, 250))
-
-  $("article img").each(function() {
-      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
-      $(this).wrapAll(strA);
+  // 文章图片预览
+  $("article img").each(function () {
+    var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+    $(this).wrapAll(strA);
   });
 
-  $('.toc-link').each(function() {
-      var href = $(this).attr("href");
-      
-      inView(href).on('exit', () => {
-        if (isDown) {
-          handleActive(href)
-        }
-      })
+  // 目录联动
+  let tocLinkList = $('.toc-link')
 
-      inView(href).on('enter', () => {
-        if (!isDown) {
-          handleActive(href)
-        }
-      })
-
-      this.onclick = function(e) {
-        var pos = $(href).offset().top - 10;
-        $("html,body").animate({scrollTop: pos}, 300);
-        setTimeout(() => {
-          handleActive(href)
-        }, 350)
-        return false
-      }
+  let controller = new ScrollMagic.Controller({
+    globalSceneOptions: {
+      triggerHook: 0.01
+    }
   })
 
-  function handleActive(href) {
-    document.querySelectorAll('.toc-link').forEach(elm => {
-      elm.classList.remove('active')
+  tocLinkList.each(function (index, elem) {
+    let href = $(this).attr("href");
+    let nextHref = tocLinkList.eq(index + 1).attr("href");
+    let height = href && nextHref ? $(nextHref).offset().top - $(href).offset().top : 0
+
+    new ScrollMagic.Scene({ triggerElement: href })
+      .duration(height)
+      .setClassToggle(".toc [href='" + href + "']", 'active')
+      .addTo(controller)
+  })
+
+  window.addEventListener('load', function () {
+    // 目录联动 图片加载完成后从新计算
+    tocLinkList.each(function (index, elem) {
+      let href = $(this).attr("href");
+      let nextHref = tocLinkList.eq(index + 1).attr("href");
+      let height = href && nextHref ? $(nextHref).offset().top - $(href).offset().top : 0
+
+      new ScrollMagic.Scene({ triggerElement: href })
+        .duration(height)
+        .setClassToggle(".toc [href='" + href + "']", 'active')
+        .addTo(controller)
     })
-    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
-  }
+  })
 </script>
 
 <script src="/lib/jquery.fancybox.min.js"></script>
