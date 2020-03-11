@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hexo使用备忘</title>
+    <url>/2020/03/11/Hexo%E4%BD%BF%E7%94%A8%E5%A4%87%E5%BF%98/</url>
+    <content><![CDATA[<ol>
+<li><p>当我修改了_config.yml 后，想在本地看看效果时：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">//Hexo路径下</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当我准备将它发布时：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean   //有时因为缓存问题，服务器更新不了主题</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2020/03/06/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
