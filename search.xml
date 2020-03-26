@@ -1,6 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>JS异步（篇一：callbacks和promise）</title>
+    <url>/2020/03/26/JS%E5%BC%82%E6%AD%A5%EF%BC%88%E7%AF%87%E4%B8%80%EF%BC%9Acallbacks%E5%92%8Cpromise%EF%BC%89/</url>
+    <content><![CDATA[<p>本想挖个小坑结果挖出一个黑洞</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>​ 最近码代码遇到一点问题，之前请求到后端数据直接做处理，现在想要拿到数据后的返回值再分别做处理，正常调用的话返回值总是空；另外有需求要在对列表数据做操作后重新请求接口刷新列表，效果来看却总是没有刷新，打断点才发现，早在操作接口数据返回之前就已经偷偷做了刷新操作，然而太早的刷新根本达不到想要的效果…暂且用 async/await 解决了问题却留下了一个大坑，先填一部分吧。</p>
+<h3 id="异步调用"><a href="#异步调用" class="headerlink" title="异步调用"></a>异步调用</h3><blockquote>
+<p>Ajax：“<strong>A</strong>synchronous <strong>J</strong>avascript <strong>A</strong>nd <strong>X</strong>ML”（异步 JavaScript 和 XML）</p>
+<p>通过 AJAX，JavaScript 无需等待服务器的响应，而是：</p>
+<ul>
+<li>在等待服务器响应时执行其他脚本</li>
+<li>当响应就绪后对响应进行处理</li>
+</ul>
+</blockquote>
+<p>由于向外部设备获取资源时，比如从网络获取文件、访问数据库等等，如果使用同步代码，将会在请求过程中一直处于阻塞状态——因为 JavaScript 是单线程，任何时候只能做一件事情, 只有一个主线程，其他的事情都阻塞了，直到前面的操作完成。</p>
+<p>好在 web 浏览器定义了函数和 api，允许我们在某些事件发生时异步的调用函数（时间推移、用户通过鼠标的交互、获取网络数据等等）而不需要阻塞主线程。</p>
+<blockquote>
+<p>Instead of immediately returning some result like most functions, functions that use callbacks take some time to produce a result. The word ‘asynchronous’, aka ‘async’ just means ‘takes some time’ or ‘happens in the future, not right now’. Usually callbacks are only used when doing I/O, e.g. downloading things, reading files, talking to databases, etc. –<a href="http://callbackhell.com/" target="_blank" rel="noopener">Callback Hell</a></p>
+</blockquote>
+<p>使用同步的办法来处理异步会遇到一些问题，比如：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> response = fetch(<span class="string">"myImage.png"</span>);</span><br><span class="line"><span class="keyword">var</span> blob = response.blob();</span><br><span class="line"><span class="comment">// display your image blob in the UI somehow</span></span><br></pre></td></tr></table></figure>
+
+<p>由于第一句的异步请求（可能）会耗费时间，会导致第二行（可能）执行报错。此时需要保证第二行的调用等到 response 返回才能继续进行。</p>
+<p><strong>异步编程的目标，就是让它变得更像同步编程。</strong>即是，在异步调用的过程中，可以去执行其他与本次调用函数的 response 无关的事情，但是与 response 有关的任务（或者说整个异步调用任务的第二执行阶段），需要保证在拿到 response 返回值后进行。整个任务看上去就像是同步调用一样。</p>
+<p><strong>其中有两个比较重要的概念：</strong></p>
+<ol>
+<li>部分代码需要在异步请求之后调用。</li>
+<li>由于异步请求的出现，代码并不总是从上往下执行的，异步执行的代码块没有阻塞，而是继续执行接下来的代码，所以会有一些跳着执行的情况出现。</li>
+</ol>
+<p>在 JavaScript 代码中，你经常会遇到两种异步编程风格：老派 callbacks（回调函数），新派 promise。</p>
+<h3 id="callbacks-e-g-‘call-you-back-later’"><a href="#callbacks-e-g-‘call-you-back-later’" class="headerlink" title="callbacks (e.g. ‘call you back later’)"></a>callbacks (e.g. ‘call you back later’)</h3><p>callbacks 其实就是回调函数，它作为参数传递给后台执行的函数，当后台执行的函数结束后，会调用 callbacks 函数，通知你这个函数已经执行完成，可以用 callbacks 执行第二阶段了。</p>
+<p>常见形式：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">downloadPhoto(<span class="string">"http://xxx.com/xxx"</span>, handlePhoto); <span class="comment">//下载图片</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handlePhoto</span>(<span class="params">error, response</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (error) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"an error!"</span>, error);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"finished"</span>, response);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码做了三件事：先声名<code>handlePhoto</code>函数；然后调用<code>downloadPhoto</code>函数，并将<code>handlePhoto</code>作为它的回调函数；最后调用<code>handlePhoto</code>函数。</p>
+<p>​ 回调函数本身没有问题，但是不恰当的使用会导致<a href="http://callbackhell.com/" target="_blank" rel="noopener">回调地狱</a>。即回调函数也是异步执行，回调函数的回调函数也是异步执行…（套娃）</p>
+<p>​ 另外，错误处理往往非常重要，Node.js 将 error 作为回调函数的第一个参数，也是作为标准提醒码农不要忘记处理错误。（如果没有错误那么第一个参数就是 null）。不过也有另外一种说法：</p>
+<blockquote>
+<p>一个有趣的问题是，为什么 Node.js 约定，回调函数的第一个参数，必须是错误对象 err（如果没有错误，该参数就是 null）？原因是执行分成两段，在这两段之间抛出的错误，程序无法捕捉，只能当作参数，传入第二段。 —-<a href="http://www.ruanyifeng.com/blog/2015/04/generator.html" target="_blank" rel="noopener">阮一峰的网络日志</a></p>
+</blockquote>
+<h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h3><p>像薛定谔的猫，本次请求成功或者失败的两种结果还没发生，就返回一个 promise 对象，表示一种中间状态像是浏览器对你说：保证尽快答复，所以叫’promise’。这个 promise 对象会在请求响应后被 resolve，并传回 Response 对象。</p>
+<p>例如 fetch：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">fetch(<span class="string">"products.json"</span>)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> response.json();</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params">json</span>) </span>&#123;</span><br><span class="line">    products = json;</span><br><span class="line">    initialize();</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Fetch problem: "</span> + err.message);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>这里 fetch()需要一个参数（请求地址）返回一个 promise，.then()代码块里对 promise 的 response 进行处理，再返回另一个 promise……其中如果任何一个.then()中的代码块执行失败，就会运行.catch()，提供一个 error 对象来报告其中发生的错误。另外<strong>同步的 try/catch 不能与 promise 一起工作，但能与<a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await" target="_blank" rel="noopener">async/await</a>一起工作。</strong></p>
+<h4 id="事件队列"><a href="#事件队列" class="headerlink" title="事件队列"></a>事件队列</h4><p>像 promise 这样的异步操作会被放入事件队列中，事件队列在主线程完成处理后运行，这样它们就不会阻止后续 JavaScript 代码的运行。排队操作将尽快完成，然后将结果返回到 JavaScript 环境。这也是前文提到的<code>代码不总是从上往下执行的</code></p>
+<h4 id="promise-对比-callbacks"><a href="#promise-对比-callbacks" class="headerlink" title="promise 对比 callbacks"></a>promise 对比 callbacks</h4><p>二者很像，如果用套娃式的写法的话，promise 的代码可能更容易阅读一些，但是本质上都是一个返回的对象，promise 可以将回调函数附加到这个对象上，而不用作为参数传递给异步调用函数。</p>
+<p>promise 的优点：</p>
+<ol>
+<li>链式的，严格按照规定的顺序调用（由.then()规定）。</li>
+<li>所有的错误都在.catch()被捕捉到，而不是每个 callback 函数中单独处理。</li>
+</ol>
+<h4 id="Promise-对象"><a href="#Promise-对象" class="headerlink" title="Promise 对象"></a>Promise 对象</h4><p>它是一个代理对象，代理一个值（通常是一次请求的返回值），这个值在对象创建时是未知的。这种办法可以让异步方法像同步方法一样返回值，只是返回一个代表未来出现的结果的 promise 对象。</p>
+<p>因为 <code>Promise.prototype.then</code> 和 <code>Promise.prototype.catch</code> 方法返回 promise 对象， 所以它们可以被链式调用。</p>
+<blockquote>
+<p>如果一个 promise 对象处在 fulfilled 或 rejected 状态而不是 pending 状态，那么它也可以被称为<em>settled</em>状态。或者用<code>resolved</code>来表示 promise 对象处于 settled 状态。</p>
+</blockquote>
+<h3 id="异步代码的本质（重点来了）"><a href="#异步代码的本质（重点来了）" class="headerlink" title="异步代码的本质（重点来了）"></a>异步代码的本质（重点来了）</h3><p>当不了解代码执行顺序或者将异步代码当做同步代码写时会遇到的问题。用一段示例来展示（<a href="https://github.com/mdn/learning-area/blob/master/javascript/asynchronous/introducing/async-sync.html" target="_blank" rel="noopener">源代码</a>）：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">"start"</span>);</span><br><span class="line"><span class="keyword">let</span> image;</span><br><span class="line"></span><br><span class="line">fetch(<span class="string">"coffee.jpg"</span>)</span><br><span class="line">  .then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"It worked :)"</span>);</span><br><span class="line">    <span class="keyword">return</span> response.blob();</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="params">myBlob</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> objectURL = URL.createObjectURL(myBlob);</span><br><span class="line">    image = <span class="built_in">document</span>.createElement(<span class="string">"img"</span>);</span><br><span class="line">    image.src = objectURL;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(image);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(</span><br><span class="line">      <span class="string">"There has been a problem with your fetch operation: "</span> + error.message</span><br><span class="line">    );</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"All done!"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>首先控制台打印<code>start</code>，然后执行异步代码块 fetch()，这里没有阻塞，将相关代码 promise 之后就继续执行了，然后到达最后一行打印<code>All done</code>。</p>
+<p>在执行 fetch()完成运行，拿到返回结果给了.then()代码块后，才打印了了<code>it worked</code>然后将返回结果给下一个.then()。所以最后控制台打印顺序是：</p>
+<ol>
+<li>start</li>
+<li>All done!</li>
+<li>It worked :)</li>
+</ol>
+<p>到这里，问题出现的原因算是明白了，之后找时间更新目前来讲更好地解决办法。</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JS Number类型的范围</title>
     <url>/2020/03/11/JS%20Number%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%8C%83%E5%9B%B4/</url>
     <content><![CDATA[<p>之前踩到的一个坑。</p>
