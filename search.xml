@@ -50,6 +50,9 @@
 <p>这个提示会告诉你在配置文件中没有定义mode，但其实缺省时，webpack也会使用默认值。</p>
 <p>mode:development时，代码就不会被压缩</p>
 ]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
       <tags>
         <tag>基础知识</tag>
         <tag>webpack</tag>
