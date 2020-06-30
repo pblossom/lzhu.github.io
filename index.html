@@ -1,365 +1,936 @@
 <!DOCTYPE html>
-<html lang=en>
-  <head>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="keywords" content="">
-  
-    <link rel="icon" href="">
-  
-    
-  <title>lzhu&#39;s pub</title>
-  <meta name="description" content="">
-  
-<link rel="stylesheet" href="/style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="lzhu&#39;s pub">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="lzhu&#39;s pub">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Lin Zhu">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'en'
+  };
+</script>
+
+  <title>lzhu's pub</title>
   
-<link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
 
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<meta name="generator" content="Hexo 4.2.0"></head>
 
-<body>
-  <header>
-  <div class="header-container">
-    <a class='logo' href="/">
-      <span>lzhu's pub</span>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">lzhu's pub</h1>
+      <span class="logo-line-after"><i></i></span>
     </a>
-    <ul class="right-header">
-      
-        <li class="nav-item">
-          
-            <a href="/" class="item-link active">首页</a>
-          
-        </li>
-      
-        <li class="nav-item">
-          
-            <a href="/categories" class="item-link">分类</a>
-          
-        </li>
-      
-        <li class="nav-item">
-          
-            <a href="/archives" class="item-link">归档</a>
-          
-        </li>
-      
-        <li class="nav-item">
-          
-            <a href="/tags" class="item-link">标签</a>
-          
-        </li>
-      
-        <li class="nav-item">
-          
-            <a href="/about" class="item-link">关于</a>
-          
-        </li>
-      
-    </ul>
-  </div>
-</header>
-
-  <main id='index'>
-  <div class="posts-list">
-    
-    <section>
-      <a href="/2020/06/30/webpack%EF%BC%88%E4%BA%8C%EF%BC%89Loader/">
-        <h3 class='post-head'>
-          webpack（二）--Loader
-        </h3>
-      </a>
-      
-      <div class="post-content">
-        
-        
-        
-        <p>打包静态文件</p>
-        
-        
-      </div>
-      <div class='post-meta'>
-        <i class="fa fa-calendar"
-          aria-hidden="true"></i> <time>
-          2020/06/30</time>
-        
-        | <i class="fa fa-folder-open-o"
-          aria-hidden="true"></i>
-        
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
   </div>
 
-
-
-        
-        
-        <span class="separator">|</span>
-        
-        <i class="fa fa-tag"
-          aria-hidden="true"></i>
-        
-        
-  <a href="/tags/#webpack" class='tag'>webpack</a>
-
-
-        
-      </div>
-    </section>
-    
-    <section>
-      <a href="/2020/06/30/webpack%EF%BC%88%E4%B8%80%EF%BC%89%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
-        <h3 class='post-head'>
-          webpack（一）--基础知识
-        </h3>
-      </a>
-      
-      <div class="post-content">
-        
-        
-        
-        <p>来嗑打包工具</p>
-        
-        
-      </div>
-      <div class='post-meta'>
-        <i class="fa fa-calendar"
-          aria-hidden="true"></i> <time>
-          2020/06/30</time>
-        
-        | <i class="fa fa-folder-open-o"
-          aria-hidden="true"></i>
-        
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-  </div>
-
-
-
-        
-        
-        <span class="separator">|</span>
-        
-        <i class="fa fa-tags"
-          aria-hidden="true"></i>
-        
-        
-  <a href="/tags/#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" class='tag'>基础知识</a>
-
-  <a href="/tags/#webpack" class='tag'>webpack</a>
-
-
-        
-      </div>
-    </section>
-    
-    <section>
-      <a href="/2020/06/29/JS%20Number%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%8C%83%E5%9B%B4/">
-        <h3 class='post-head'>
-          JS Number类型的范围
-        </h3>
-      </a>
-      
-      <div class="post-content">
-        
-        
-        
-        <p>之前踩到的一个坑。</p>
-        
-        
-      </div>
-      <div class='post-meta'>
-        <i class="fa fa-calendar"
-          aria-hidden="true"></i> <time>
-          2020/06/29</time>
-        
-        | <i class="fa fa-folder-open-o"
-          aria-hidden="true"></i>
-        
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-  </div>
-
-
-
-        
-        
-        <span class="separator">|</span>
-        
-        <i class="fa fa-tags"
-          aria-hidden="true"></i>
-        
-        
-  <a href="/tags/#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" class='tag'>基础知识</a>
-
-  <a href="/tags/#JavaScript" class='tag'>JavaScript</a>
-
-
-        
-      </div>
-    </section>
-    
-    <section>
-      <a href="/2020/06/29/hello-world/">
-        <h3 class='post-head'>
-          Hello World
-        </h3>
-      </a>
-      
-      <div class="post-content">
-        
-        
-        
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-        
-        
-      </div>
-      <div class='post-meta'>
-        <i class="fa fa-calendar"
-          aria-hidden="true"></i> <time>
-          2020/06/29</time>
-        
-        
-      </div>
-    </section>
-    
-    <section>
-      <a href="/2020/03/26/JS%E5%BC%82%E6%AD%A5%EF%BC%88%E7%AF%87%E4%B8%80%EF%BC%9Acallbacks%E5%92%8Cpromise%EF%BC%89/">
-        <h3 class='post-head'>
-          JS异步（篇一：callbacks和promise）
-        </h3>
-      </a>
-      
-      <div class="post-content">
-        
-        
-        
-        <p>本想挖个小坑结果挖出一个黑洞</p>
-        
-        
-      </div>
-      <div class='post-meta'>
-        <i class="fa fa-calendar"
-          aria-hidden="true"></i> <time>
-          2020/03/26</time>
-        
-        | <i class="fa fa-folder-open-o"
-          aria-hidden="true"></i>
-        
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-  </div>
-
-
-
-        
-        
-        <span class="separator">|</span>
-        
-        <i class="fa fa-tag"
-          aria-hidden="true"></i>
-        
-        
-  <a href="/tags/#JavaScript" class='tag'>JavaScript</a>
-
-
-        
-      </div>
-    </section>
-    
-    <section>
-      <a href="/2020/03/11/Hexo%E4%BD%BF%E7%94%A8%E5%A4%87%E5%BF%98/">
-        <h3 class='post-head'>
-          Hexo使用备忘
-        </h3>
-      </a>
-      
-      <div class="post-content">
-        
-        
-        
-        <p>万万没想到一小时后我竟不需要这个文章了。</p>
-        
-        
-      </div>
-      <div class='post-meta'>
-        <i class="fa fa-calendar"
-          aria-hidden="true"></i> <time>
-          2020/03/11</time>
-        
-        | <i class="fa fa-folder-open-o"
-          aria-hidden="true"></i>
-        
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/test/">test</a>
-  </div>
-
-
-
-        
-        
-        <span class="separator">|</span>
-        
-        <i class="fa fa-tag"
-          aria-hidden="true"></i>
-        
-        
-  <a href="/tags/#Hexo" class='tag'>Hexo</a>
-
-
-        
-      </div>
-    </section>
-    
-  </div>
-  <aside>
-    
-    <div class="search">
-      <div class="content">
-        <form action="//www.google.com/search"
-          target="_blank"
-          class="search-form">
-          <input type="text"
-            name="q"
-            maxlength="20"
-            placeholder=Search>
-          <input type="hidden"
-            name='sitesearch'
-            value="http://yoursite.com">
-        </form>
-      </div>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
     </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/30/webpack%EF%BC%88%E4%BA%8C%EF%BC%89Loader/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lin Zhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lzhu's pub">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/30/webpack%EF%BC%88%E4%BA%8C%EF%BC%89Loader/" class="post-title-link" itemprop="url">webpack（二）--Loader</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-06-30 08:04:41 / Modified: 16:07:29" itemprop="dateCreated datePublished" datetime="2020-06-30T08:04:41+08:00">2020-06-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
     
     
     
-    <div class="categories">
-      <h1>
-        Categories
-      </h1>
-      <div class="content">
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li></ul>
-      </div>
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>打包静态文件</p>
+<h1 id="Loader"><a href="#Loader" class="headerlink" title="Loader"></a>Loader</h1><blockquote>
+<p>前序问题：</p>
+<ol>
+<li>webpack 是什么？</li>
+<li>模块是什么</li>
+<li>webpack 配置文件的作用是什么？</li>
+</ol>
+</blockquote>
+<p>回答：1.webpack 是模块打包工具。</p>
+<ol start="2">
+<li>模块是项目中的 js 文件、css、或者是一张图片等。</li>
+<li>配置文件是配置如何去打包模块</li>
+</ol>
+<h2 id="打包图片文件"><a href="#打包图片文件" class="headerlink" title="打包图片文件"></a>打包图片文件</h2><p>webpack 可以打包 js 文件，但是非 js 文件需要手动在模块中定义如何打包。以 jpg 文件为例，看代码中如何配置.其他类型的文件同理，需要用对应的 loader 去配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[webpack.config.js];</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.jpg$/</span>,</span><br><span class="line">        use: &#123;</span><br><span class="line">          loader: <span class="string">"file-loader"</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>module 是个对象，包含的 rules 是数组，数组中定义了以 jpg 结尾的文件名（正则表达式），这样的文件用<code>file-loader</code>这个 loader 来打包。</p>
+<p>当然，需要用 npm 安装这个 file-loader。</p>
+<blockquote>
+<p>file-loader 做了什么？</p>
+<p>它发现有.jpg 结尾的文件后，就把它打包移动到 output 目录(这里是 dist)并重命名（名字也可以在配置文件中自定义）。得到图片名称后，会把名字作为返回值，返回给引入模块的变量中。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[index.js];</span><br><span class="line"><span class="keyword">var</span> Header = <span class="built_in">require</span>(<span class="string">"./header.js"</span>);</span><br><span class="line"><span class="keyword">var</span> Sidebar = <span class="built_in">require</span>(<span class="string">"./sidebar.js"</span>);</span><br><span class="line"><span class="keyword">var</span> Content = <span class="built_in">require</span>(<span class="string">"./content.js"</span>);</span><br><span class="line"><span class="keyword">var</span> avatar = <span class="built_in">require</span>(<span class="string">"./avatar.jpg"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(avatar);</span><br><span class="line"><span class="comment">//打包后在dist中的图片名称：\dist\e49823921af3dad34a48ed93700b95ac.jpg</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Header();</span><br><span class="line"><span class="keyword">new</span> Sidebar();</span><br><span class="line"><span class="keyword">new</span> Content();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">img.src = avatar;</span><br><span class="line"><span class="keyword">var</span> root = <span class="built_in">document</span>.getElementById(<span class="string">"root"</span>);</span><br><span class="line">root.appendChild(img);</span><br></pre></td></tr></table></figure>
+
+<p>vue 文件同理要用 vue-loader</p>
+<h3 id="自定义静态文件打包后的名字-路径等信息"><a href="#自定义静态文件打包后的名字-路径等信息" class="headerlink" title="自定义静态文件打包后的名字/路径等信息"></a>自定义静态文件打包后的名字/路径等信息</h3><p>通过配置 loader 的 option 参数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">        test: <span class="regexp">/\.jpg$/</span>,</span><br><span class="line">        use: &#123;</span><br><span class="line">          loader: <span class="string">"file-loader"</span>,</span><br><span class="line">          options: &#123;</span><br><span class="line">            <span class="comment">//name就是图片文件本身的name</span></span><br><span class="line">            <span class="comment">//ext是图片本身的后缀</span></span><br><span class="line">            name: <span class="string">"[name].[ext]"</span>,</span><br><span class="line">            outputPath: <span class="string">"images/"</span>, <span class="comment">//打包到dist下的images文件夹下</span></span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
+
+<p><code>name: &quot;[name].[ext]&quot;</code>这种语法叫 placeholder 占位符。在官网可以查到各种占位符如[hash]等等。</p>
+<h3 id="url-loader"><a href="#url-loader" class="headerlink" title="url-loader"></a>url-loader</h3><p>这个 loader 同样可以打包 jpg|png|gif 等图片文件,但不是把图片打包到 dist 文件夹的方式，而是把图片转换为 base64 编码，直接放入 bundle.js 文件中。节省一次 http 请求，但会浪费加载时间。</p>
+<p><strong>所以 url-loader 有一个配置 limit，如果图片大于 limit，就打包成图片文件，如果小于 limit，就打包到 bundle.js 中，配置如下：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//rules</span></span><br><span class="line">&#123;</span><br><span class="line">        test: <span class="regexp">/\.jpg$/</span>,</span><br><span class="line">        use: &#123;</span><br><span class="line">          loader: <span class="string">"file-loader"</span>,</span><br><span class="line">          options: &#123;</span><br><span class="line">            <span class="comment">//name就是图片文件本身的name</span></span><br><span class="line">            <span class="comment">//ext是图片本身的后缀</span></span><br><span class="line">            name: <span class="string">"[name].[ext]"</span>,</span><br><span class="line">            outputPath: <span class="string">"images/"</span>, <span class="comment">//打包到dist下的images文件夹下</span></span><br><span class="line">            limit : <span class="number">10240</span> <span class="comment">//10kb</span></span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
+
+<h2 id="打包样式文件"><a href="#打包样式文件" class="headerlink" title="打包样式文件"></a>打包样式文件</h2><p>需要用到 [“style-loader”, “css-loader”]</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//module</span></span><br><span class="line">&#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [<span class="string">"style-loader"</span>, <span class="string">"css-loader"</span>],</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>css-loader：分析出几个 css 文件之间的关系，最终把这几个 css 文件合并成一段 css。</p>
+<p>style-loader：把 css-loader 生成的 css 代码片段挂载到页面的 header 部分。</p>
+<h3 id="scss-less-stylus"><a href="#scss-less-stylus" class="headerlink" title="scss less stylus"></a>scss less stylus</h3><p>.scss 结尾的需要额外的 sass-loader 去把.scss 文件翻译成 css 文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//module</span></span><br><span class="line">&#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [<span class="string">"style-loader"</span>, <span class="string">"css-loader"</span> , <span class="string">"sass-loader"</span>],</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
+
+<p><strong>loader 的执行是有顺序的， 顺序是从下到上，从右到左</strong></p>
+<h3 id="自动添加厂商前缀"><a href="#自动添加厂商前缀" class="headerlink" title="自动添加厂商前缀"></a>自动添加厂商前缀</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//module</span></span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [<span class="string">"style-loader"</span>, <span class="string">"css-loader"</span>, <span class="string">"sass-loader"</span>, <span class="string">"postcss-loader"</span>],</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>通过查看 webpack 官网的 loader，发现 postcss-loader 需要配置文件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[postcss.config.js];</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">//使用了autoprefixer来自动添加厂商前缀</span></span><br><span class="line">  plugins: [<span class="built_in">require</span>(<span class="string">"autoprefixer"</span>)],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>并安装这个 autoprefixer 插件，就可以实现自动添加厂商前缀的效果了，可以在打包后的 html 文件用浏览器打开查看。</p>
+<h3 id="css-loader-中的-importLoaders"><a href="#css-loader-中的-importLoaders" class="headerlink" title="css-loader 中的 importLoaders"></a><strong>css-loader 中的 importLoaders</strong></h3><ul>
+<li>官网解释：</li>
+</ul>
+<h4 id="importLoaders"><a href="#importLoaders" class="headerlink" title="importLoaders"></a><code>importLoaders</code></h4><p>查询参数 <code>importLoaders</code>，用于配置「<code>css-loader</code> 作用于 <code>@import</code> 的资源之前」有多少个 loader。</p>
+<p><strong>webpack.config.js</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">  use: [</span><br><span class="line">    <span class="string">'style-loader'</span>,</span><br><span class="line">    &#123;</span><br><span class="line">      loader: <span class="string">'css-loader'</span>,</span><br><span class="line">      options: &#123;</span><br><span class="line">        importLoaders: <span class="number">2</span> <span class="comment">// 0 =&gt; 无 loader(默认); 1 =&gt; postcss-loader; 2 =&gt; postcss-loader, sass-loader</span></span><br><span class="line">        modules : <span class="literal">true</span> <span class="comment">//开启模块化打包，下小结详细讲解</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">'postcss-loader'</span>,</span><br><span class="line">    <span class="string">'sass-loader'</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在模块系统（即 webpack）支持原始 loader 匹配后，此功能可能在将来会发生变化。</p>
+<ul>
+<li>适用情况：</li>
+</ul>
+<p>当一个 scss 文件中@import 了新的 scss 文件，此时对原文件的打包已经按顺序加载到了 css-loader 的功能，引入的 scss 文件用 css-loader 加载就会出错。这个<code>importLoaders</code>用来使引入的 scss 文件依然从 sass-loader 开始加载。</p>
+<h3 id="css-打包的模块化"><a href="#css-打包的模块化" class="headerlink" title="css 打包的模块化"></a>css 打包的模块化</h3><p>在入口文件中引入的样式文件会作用在全局，可能会出现意外的样式覆盖问题，所以引入 css 模块化概念。</p>
+<p>只需要加一句<code>modules:true</code>即可开启。</p>
+<p>对应的，在入口文件中也需做修改，<strong>注意：如果依然按全局引入的话样式会不生效。</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[index.js]入口文件</span><br><span class="line"><span class="keyword">import</span> avatar <span class="keyword">from</span> <span class="string">"./avatar.jpg"</span>;</span><br><span class="line"><span class="keyword">import</span> Avatar <span class="keyword">from</span> <span class="string">"./avatar"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//import "./avatar"; //在这里引入的样式作用在全局,容易出现样式冲突</span></span><br><span class="line"><span class="keyword">import</span> style <span class="keyword">from</span> <span class="string">"./index.scss"</span>; <span class="comment">//使用模块化的css，配合css-loader的option：&#123;modules:true&#125;</span></span><br><span class="line"></span><br><span class="line">Avatar();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> root = <span class="built_in">document</span>.getElementById(<span class="string">"root"</span>);</span><br><span class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">img.classList.add(style.avatar); <span class="comment">//模块引入的使用方法</span></span><br><span class="line"><span class="comment">//img.classList.add("avatar"); //全局引入的使用方法</span></span><br><span class="line">img.src = avatar;</span><br><span class="line">root.append(img);</span><br><span class="line"></span><br><span class="line">打包后：</span><br><span class="line">&lt;img <span class="class"><span class="keyword">class</span></span>=<span class="string">"_17cnVz87yzSOO5TpFdnLsk"</span> src=<span class="string">"images/avatar.jpg"</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在其他 js 文件中使用同理。</p>
+<h2 id="打包字体文件"><a href="#打包字体文件" class="headerlink" title="打包字体文件"></a>打包字体文件</h2><p>如 iconfont 的<code>eot .ttf .svg .woff</code>等，需要额外的 loader 去进行打包。这里使用的是 file-loader。配置与 url-loader 类似。</p>
+<p>最后附上完整文件，<a href="https://github.com/pblossom/webpack-practice" target="_blank" rel="noopener">github 地址</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">[webpack.config.js];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  mode: <span class="string">"development"</span>, <span class="comment">//添加mode，否则在打包时会有警告，默认值是 production</span></span><br><span class="line">  entry: &#123; <span class="attr">main</span>: <span class="string">"./src/index.js"</span> &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">"bundle.js"</span>,</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">"dist"</span>), <span class="comment">//这里必须使用绝对路径，所以引入node的核心模块path，生成一个绝对路径，__diename就是当前文件所在目录</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.(jpg|png|gif)$/</span>,</span><br><span class="line">        use: &#123;</span><br><span class="line">          loader: <span class="string">"url-loader"</span>,</span><br><span class="line">          options: &#123;</span><br><span class="line">            name: <span class="string">"[name].[ext]"</span>,</span><br><span class="line">            outputPath: <span class="string">"images/"</span>, <span class="comment">//打包到dist下的images文件夹下</span></span><br><span class="line">            limit: <span class="number">10240</span>, <span class="comment">//limit  图片小于10k则变成base64写入bundle.js，大于10k则单独打包到image文件夹中</span></span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.(eot|ttf|svg|woff)$/</span>,</span><br><span class="line">        use: &#123;</span><br><span class="line">          loader: <span class="string">"file-loader"</span>,</span><br><span class="line">          options: &#123;</span><br><span class="line">            name: <span class="string">"[name].[ext]"</span>,</span><br><span class="line">            outputPath: <span class="string">"font/"</span>, <span class="comment">//打包到dist下的font文件夹下</span></span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.scss$/</span>,</span><br><span class="line">        use: [</span><br><span class="line">          <span class="string">"style-loader"</span>,</span><br><span class="line">          &#123;</span><br><span class="line">            loader: <span class="string">"css-loader"</span>,</span><br><span class="line">            options: &#123;</span><br><span class="line">              <span class="comment">//配置「`css-loader 作用于 `@import` 的资源之前」有多少个 loader。</span></span><br><span class="line">              importLoaders: <span class="number">2</span>, <span class="comment">// 0 =&gt; 无 loader(默认); 1 =&gt; postcss-loader; 2 =&gt; postcss-loader, sass-loader</span></span><br><span class="line">              <span class="comment">//modules: true,</span></span><br><span class="line">            &#125;,</span><br><span class="line">          &#125;,</span><br><span class="line">          <span class="string">"postcss-loader"</span>,</span><br><span class="line">          <span class="string">"sass-loader"</span>,</span><br><span class="line">        ],</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
     </div>
+
     
     
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/30/webpack%EF%BC%88%E4%B8%80%EF%BC%89%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lin Zhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lzhu's pub">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/30/webpack%EF%BC%88%E4%B8%80%EF%BC%89%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-title-link" itemprop="url">webpack（一）--基础知识</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-06-30 05:36:16 / Modified: 13:48:58" itemprop="dateCreated datePublished" datetime="2020-06-30T05:36:16+08:00">2020-06-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>来嗑打包工具</p>
+<h2 id="基础三连"><a href="#基础三连" class="headerlink" title="基础三连"></a>基础三连</h2><ol>
+<li>是什么？</li>
+<li>干什么？</li>
+<li>怎么干？</li>
+</ol>
+<blockquote>
+<ol>
+<li>是模块打包工具</li>
+<li>打包模块，包括js、css静态文件等。</li>
+<li>通过配置文件去配置</li>
+</ol>
+</blockquote>
+<h2 id="安装和基本操作"><a href="#安装和基本操作" class="headerlink" title="安装和基本操作"></a>安装和基本操作</h2><h3 id="npm-init"><a href="#npm-init" class="headerlink" title="npm init"></a>npm init</h3><p>使这个项目符合node规范，可以用webpack来管理这个项目。它在项目中生成一个package.json文件。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[package.json]</span><br><span class="line">&#123;</span><br><span class="line">...</span><br><span class="line">+ 'private':true//表示是私人仓库，不会被发布到npm仓库中去</span><br><span class="line">- 'main':'index.js' //向外暴露一个js文件以便被引用</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装webpack"><a href="#安装webpack" class="headerlink" title="安装webpack"></a>安装webpack</h3><p><code>npm install webpack webpack-cli -D</code> -D=–save-dev</p>
+<p>不推荐全局安装。不便于使用不同版本</p>
+<p><strong>npx</strong>：node提供的在项目内使用webpack命令。直接使用webpack命令时会从全局查找而报错。</p>
+<h3 id="3种运行webpack的方式"><a href="#3种运行webpack的方式" class="headerlink" title="3种运行webpack的方式"></a>3种运行webpack的方式</h3><ol>
+<li>global  <code>webpack index.js</code> 不推荐，可能不同项目用的webpack版本不同。</li>
+<li>local  <code>npx webpack index.js</code>  配置文件在webpack.config.js中配置。</li>
+<li>npm scripts  在package.json文件中添加配置，再用npm run bundle 即是2的效果</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[package.json]</span><br><span class="line">"scripts": &#123;</span><br><span class="line">    "test": "echo \"Error: no test specified\" &amp;&amp; exit 1",</span><br><span class="line">    "bundle": "wabpack" </span><br><span class="line">    <span class="comment">//配置后可用npm run bubdle 代替npx wabpack,优先查找node_modules里安装的webpack</span></span><br><span class="line"></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>实际都是运行webpack命令，webpack-cli包就是能在命令行运行webpack命令。</p>
+</blockquote>
+<blockquote>
+<p><em>When installing a package that will be bundled into your production bundle, you should use</em> <code>npm install --save</code><em>. If you’re installing a package for development purposes (e.g. a linter, testing libraries, etc.) then you should use</em> <code>npm install --save-dev</code><em>. More information can be found in the</em> <a href="https://docs.npmjs.com/cli/install" target="_blank" rel="noopener">npm documentation</a><em>.</em></p>
+</blockquote>
+<h3 id="打包输出的内容"><a href="#打包输出的内容" class="headerlink" title="打包输出的内容"></a>打包输出的内容</h3><p><img src="G:%5Ccoding%5CMarkDown%5Cwebpack%5Cimage-20200629152904382.png" alt="image-20200629152904382"></p>
+<p>Asset：打包生成的js文件</p>
+<p>size：文件大小</p>
+<p>Chunks：入口文件的chunk id</p>
+<p>Chunk Names：入口文件的Chunk name:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[webpack.config.js]</span><br><span class="line">mudule.exports=&#123;</span><br><span class="line">    mode:<span class="string">'production'</span></span><br><span class="line">	enrty:<span class="string">'./src/index.js'</span></span><br><span class="line">    <span class="comment">//是以下的简写</span></span><br><span class="line">    entry:&#123;</span><br><span class="line">    	main:<span class="string">'./src/index.js'</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这个main就是默认的chunk name</p>
+</blockquote>
+<h3 id="缺少mode字段的wanning"><a href="#缺少mode字段的wanning" class="headerlink" title="缺少mode字段的wanning"></a>缺少mode字段的wanning</h3><img src="G:\coding\MarkDown\webpack\image-20200629152758065.png" alt="image-20200629152758065"  />
+
+<p>默认的mode是’production’。此时打包出的文件会被压缩（变成了1行）</p>
+<p>这个提示会告诉你在配置文件中没有定义mode，但其实缺省时，webpack也会使用默认值。</p>
+<p>mode:development时，代码就不会被压缩</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/29/JS%20Number%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%8C%83%E5%9B%B4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lin Zhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lzhu's pub">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/29/JS%20Number%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%8C%83%E5%9B%B4/" class="post-title-link" itemprop="url">JS Number类型的范围</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-06-29 13:15:44 / Modified: 09:36:06" itemprop="dateCreated datePublished" datetime="2020-06-29T13:15:44+08:00">2020-06-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>之前踩到的一个坑。</p>
+<p>js 中，不区分 int float 等等，只有一个 Number 类型。占 64 位（8 字节）。</p>
+<p>数字类型采用 64 位浮点格式表示，我们可以利用 Number 对象的属性 Number.MAX_VALUE , Number.MIN_VALUE 来查看；JavaScript 中 Number 范围为正负 2 的 53 次方，也即从最小值-9007199254740992 到最大值+9007199254740992 之间的范围。−9007199254740992 and 9007199254740992 （即正负 2 的 53 次方）<br><img src="/images/js-number.png" alt="image-20200302172949558"></p>
+<p>JavaScript 里的数字是采用 IEEE 754 标准的 64 位双精度浮点数。该规范定义了浮点数的格式，对于 64 位的浮点数在内存中的表示，最高的 1 位是符号位，接着的 11 位是指数，剩下的 52 位为有效数字，具体：</p>
+<p>第 0 位：符号位， s 表示 ，0 表示正数，1 表示负数；<br>第 1 位到第 11 位：储存指数部分， e 表示 ；<br>第 12 位到第 63 位：储存小数部分（即有效数字），f 表示，<br>符号位决定了一个数的正负，指数部分决定了数值的大小，小数部分决定了数值的精度。 IEEE 754 规定，有效数字第一位默认总是 1，不保存在 64 位浮点数之中。也就是说，有效数字总是 1.xx…xx 的形式，其中 xx..xx 的部分保存在 64 位浮点数之中，最长可能为 52 位。因此，JavaScript 提供的有效数字最长为 53 个二进制位（64 位浮点的后 52 位+有效数字第一位的 1）。</p>
+<blockquote>
+<p>即：由于有 11 位的指数位，可以表示很大的数值，但是超过 53 位大数的精度无法保证。</p>
+<p>这样的规则会带来一些问题，比如浮点数的精度问题和大数问题。</p>
+</blockquote>
+<h3 id="浮点数精度问题"><a href="#浮点数精度问题" class="headerlink" title="浮点数精度问题"></a>浮点数精度问题</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> float1 = <span class="number">7.9</span>;</span><br><span class="line"><span class="keyword">const</span> float2 = <span class="number">0.8</span>;</span><br><span class="line"><span class="built_in">console</span>.log(float1 - float2); <span class="comment">//7.1000000000000005</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>发生的原因：</strong><br>首先，十进制的 7.9 和 0.8 都会被转换成二进制，但由于浮点数用二进制表达时是无穷的。标准的 64 位双精度浮点数的小数部分最多支持 53 位二进制位，所以浮点数小数位的限制而截断的二进制数字，进行运算后，再转换为十进制，就会产生误差。<br>这种问题根本原因是在于：计算机都是 0 或 1 标识，对于某浮点准确值，是通过不断增加位数去逼近该值。浮点数实现这种方式就是移位运算，所以不管是在表示还是运算时,都会出现误差。<br><strong>如何解决：</strong><br>1 简单的方法使用 toFixed<br>parseFloat((数学表达式).toFixed(digits))； // toFixed() 精度参数须在 0 与 20 之间<br>// 运行</p>
+<h4 id="大数问题"><a href="#大数问题" class="headerlink" title="大数问题"></a>大数问题</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aa&#x3D;68406452651714150433  &#x2F;&#x2F;显示出aa&#x3D;68406452651714150000</span><br></pre></td></tr></table></figure>
+
+<p>js 的 number 类型有个最大值（安全值）。即 2 的 53 次方，为 9007199254740992。如果超过这个值，那么 js 会出现不精确的问题。这个值为 16 位。</p>
+<p>如果再大一些，达到指数位也无法显示这么大的数，就会变成 infinity（由于符号标志位是单独的，所以区分正负）</p>
+<hr>
+<p>网上找的说法：</p>
+<p>JavaScript 能表示并进行精确算术运算的整数范围为：正负 2 的 53 次方，也即从最小值-9007199254740992 到最大值+9007199254740992 之间的范围；对于超过这个范围的整数，JavaScript 依旧可以进行运算，但却不保证运算结果的精度。值得注意的是，对于整数的位运算（比如移位等操作），JavaScript 仅支持 32 位整型数，也即从-2147483648 到+2147483647 之间的整数。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/29/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lin Zhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lzhu's pub">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/29/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-06-29 13:15:44 / Modified: 09:36:06" itemprop="dateCreated datePublished" datetime="2020-06-29T13:15:44+08:00">2020-06-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/26/JS%E5%BC%82%E6%AD%A5%EF%BC%88%E7%AF%87%E4%B8%80%EF%BC%9Acallbacks%E5%92%8Cpromise%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lin Zhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lzhu's pub">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/26/JS%E5%BC%82%E6%AD%A5%EF%BC%88%E7%AF%87%E4%B8%80%EF%BC%9Acallbacks%E5%92%8Cpromise%EF%BC%89/" class="post-title-link" itemprop="url">JS异步（篇一：callbacks和promise）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-03-26 11:58:40" itemprop="dateCreated datePublished" datetime="2020-03-26T11:58:40+08:00">2020-03-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-29 09:36:06" itemprop="dateModified" datetime="2020-06-29T09:36:06+08:00">2020-06-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本想挖个小坑结果挖出一个黑洞</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>​ 最近码代码遇到一点问题，之前请求到后端数据直接做处理，现在想要拿到数据后的返回值再分别做处理，正常调用的话返回值总是空；另外有需求要在对列表数据做操作后重新请求接口刷新列表，效果来看却总是没有刷新，打断点才发现，早在操作接口数据返回之前就已经偷偷做了刷新操作，然而太早的刷新根本达不到想要的效果…暂且用 async/await 解决了问题却留下了一个大坑，先填一部分吧。</p>
+<h3 id="异步调用"><a href="#异步调用" class="headerlink" title="异步调用"></a>异步调用</h3><blockquote>
+<p>Ajax：“<strong>A</strong>synchronous <strong>J</strong>avascript <strong>A</strong>nd <strong>X</strong>ML”（异步 JavaScript 和 XML）</p>
+<p>通过 AJAX，JavaScript 无需等待服务器的响应，而是：</p>
+<ul>
+<li>在等待服务器响应时执行其他脚本</li>
+<li>当响应就绪后对响应进行处理</li>
+</ul>
+</blockquote>
+<p>由于向外部设备获取资源时，比如从网络获取文件、访问数据库等等，如果使用同步代码，将会在请求过程中一直处于阻塞状态——因为 JavaScript 是单线程，任何时候只能做一件事情, 只有一个主线程，其他的事情都阻塞了，直到前面的操作完成。</p>
+<p>好在 web 浏览器定义了函数和 api，允许我们在某些事件发生时异步的调用函数（时间推移、用户通过鼠标的交互、获取网络数据等等）而不需要阻塞主线程。</p>
+<blockquote>
+<p>Instead of immediately returning some result like most functions, functions that use callbacks take some time to produce a result. The word ‘asynchronous’, aka ‘async’ just means ‘takes some time’ or ‘happens in the future, not right now’. Usually callbacks are only used when doing I/O, e.g. downloading things, reading files, talking to databases, etc. –<a href="http://callbackhell.com/" target="_blank" rel="noopener">Callback Hell</a></p>
+</blockquote>
+<p>使用同步的办法来处理异步会遇到一些问题，比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> response = fetch(<span class="string">"myImage.png"</span>);</span><br><span class="line"><span class="keyword">var</span> blob = response.blob();</span><br><span class="line"><span class="comment">// display your image blob in the UI somehow</span></span><br></pre></td></tr></table></figure>
+
+<p>由于第一句的异步请求（可能）会耗费时间，会导致第二行（可能）执行报错。此时需要保证第二行的调用等到 response 返回才能继续进行。</p>
+<p><strong>异步编程的目标，就是让它变得更像同步编程。</strong>即是，在异步调用的过程中，可以去执行其他与本次调用函数的 response 无关的事情，但是与 response 有关的任务（或者说整个异步调用任务的第二执行阶段），需要保证在拿到 response 返回值后进行。整个任务看上去就像是同步调用一样。</p>
+<p><strong>其中有两个比较重要的概念：</strong></p>
+<ol>
+<li>部分代码需要在异步请求之后调用。</li>
+<li>由于异步请求的出现，代码并不总是从上往下执行的，异步执行的代码块没有阻塞，而是继续执行接下来的代码，所以会有一些跳着执行的情况出现。</li>
+</ol>
+<p>在 JavaScript 代码中，你经常会遇到两种异步编程风格：老派 callbacks（回调函数），新派 promise。</p>
+<h3 id="callbacks-e-g-‘call-you-back-later’"><a href="#callbacks-e-g-‘call-you-back-later’" class="headerlink" title="callbacks (e.g. ‘call you back later’)"></a>callbacks (e.g. ‘call you back later’)</h3><p>callbacks 其实就是回调函数，它作为参数传递给后台执行的函数，当后台执行的函数结束后，会调用 callbacks 函数，通知你这个函数已经执行完成，可以用 callbacks 执行第二阶段了。</p>
+<p>常见形式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">downloadPhoto(<span class="string">"http://xxx.com/xxx"</span>, handlePhoto); <span class="comment">//下载图片</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handlePhoto</span>(<span class="params">error, response</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (error) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"an error!"</span>, error);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"finished"</span>, response);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码做了三件事：先声名<code>handlePhoto</code>函数；然后调用<code>downloadPhoto</code>函数，并将<code>handlePhoto</code>作为它的回调函数；最后调用<code>handlePhoto</code>函数。</p>
+<p>​ 回调函数本身没有问题，但是不恰当的使用会导致<a href="http://callbackhell.com/" target="_blank" rel="noopener">回调地狱</a>。即回调函数也是异步执行，回调函数的回调函数也是异步执行…（套娃）</p>
+<p>​ 另外，错误处理往往非常重要，Node.js 将 error 作为回调函数的第一个参数，也是作为标准提醒码农不要忘记处理错误。（如果没有错误那么第一个参数就是 null）。不过也有另外一种说法：</p>
+<blockquote>
+<p>一个有趣的问题是，为什么 Node.js 约定，回调函数的第一个参数，必须是错误对象 err（如果没有错误，该参数就是 null）？原因是执行分成两段，在这两段之间抛出的错误，程序无法捕捉，只能当作参数，传入第二段。 —-<a href="http://www.ruanyifeng.com/blog/2015/04/generator.html" target="_blank" rel="noopener">阮一峰的网络日志</a></p>
+</blockquote>
+<h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h3><p>像薛定谔的猫，本次请求成功或者失败的两种结果还没发生，就返回一个 promise 对象，表示一种中间状态像是浏览器对你说：保证尽快答复，所以叫’promise’。这个 promise 对象会在请求响应后被 resolve，并传回 Response 对象。</p>
+<p>例如 fetch：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">"products.json"</span>)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> response.json();</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params">json</span>) </span>&#123;</span><br><span class="line">    products = json;</span><br><span class="line">    initialize();</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Fetch problem: "</span> + err.message);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>这里 fetch()需要一个参数（请求地址）返回一个 promise，.then()代码块里对 promise 的 response 进行处理，再返回另一个 promise……其中如果任何一个.then()中的代码块执行失败，就会运行.catch()，提供一个 error 对象来报告其中发生的错误。另外<strong>同步的 try/catch 不能与 promise 一起工作，但能与<a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await" target="_blank" rel="noopener">async/await</a>一起工作。</strong></p>
+<h4 id="事件队列"><a href="#事件队列" class="headerlink" title="事件队列"></a>事件队列</h4><p>像 promise 这样的异步操作会被放入事件队列中，事件队列在主线程完成处理后运行，这样它们就不会阻止后续 JavaScript 代码的运行。排队操作将尽快完成，然后将结果返回到 JavaScript 环境。这也是前文提到的<code>代码不总是从上往下执行的</code></p>
+<h4 id="promise-对比-callbacks"><a href="#promise-对比-callbacks" class="headerlink" title="promise 对比 callbacks"></a>promise 对比 callbacks</h4><p>二者很像，如果用套娃式的写法的话，promise 的代码可能更容易阅读一些，但是本质上都是一个返回的对象，promise 可以将回调函数附加到这个对象上，而不用作为参数传递给异步调用函数。</p>
+<p>promise 的优点：</p>
+<ol>
+<li>链式的，严格按照规定的顺序调用（由.then()规定）。</li>
+<li>所有的错误都在.catch()被捕捉到，而不是每个 callback 函数中单独处理。</li>
+</ol>
+<h4 id="Promise-对象"><a href="#Promise-对象" class="headerlink" title="Promise 对象"></a>Promise 对象</h4><p>它是一个代理对象，代理一个值（通常是一次请求的返回值），这个值在对象创建时是未知的。这种办法可以让异步方法像同步方法一样返回值，只是返回一个代表未来出现的结果的 promise 对象。</p>
+<p>因为 <code>Promise.prototype.then</code> 和 <code>Promise.prototype.catch</code> 方法返回 promise 对象， 所以它们可以被链式调用。</p>
+<blockquote>
+<p>如果一个 promise 对象处在 fulfilled 或 rejected 状态而不是 pending 状态，那么它也可以被称为<em>settled</em>状态。或者用<code>resolved</code>来表示 promise 对象处于 settled 状态。</p>
+</blockquote>
+<h3 id="异步代码的本质（重点来了）"><a href="#异步代码的本质（重点来了）" class="headerlink" title="异步代码的本质（重点来了）"></a>异步代码的本质（重点来了）</h3><p>当不了解代码执行顺序或者将异步代码当做同步代码写时会遇到的问题。用一段示例来展示（<a href="https://github.com/mdn/learning-area/blob/master/javascript/asynchronous/introducing/async-sync.html" target="_blank" rel="noopener">源代码</a>）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">"start"</span>);</span><br><span class="line"><span class="keyword">let</span> image;</span><br><span class="line"></span><br><span class="line">fetch(<span class="string">"coffee.jpg"</span>)</span><br><span class="line">  .then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"It worked :)"</span>);</span><br><span class="line">    <span class="keyword">return</span> response.blob();</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="params">myBlob</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> objectURL = URL.createObjectURL(myBlob);</span><br><span class="line">    image = <span class="built_in">document</span>.createElement(<span class="string">"img"</span>);</span><br><span class="line">    image.src = objectURL;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(image);</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(</span><br><span class="line">      <span class="string">"There has been a problem with your fetch operation: "</span> + error.message</span><br><span class="line">    );</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"All done!"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>首先控制台打印<code>start</code>，然后执行异步代码块 fetch()，这里没有阻塞，将相关代码 promise 之后就继续执行了，然后到达最后一行打印<code>All done</code>。</p>
+<p>在执行 fetch()完成运行，拿到返回结果给了.then()代码块后，才打印了了<code>it worked</code>然后将返回结果给下一个.then()。所以最后控制台打印顺序是：</p>
+<ol>
+<li>start</li>
+<li>All done!</li>
+<li>It worked :)</li>
+</ol>
+<p>到这里，问题出现的原因算是明白了，之后找时间更新目前来讲更好地解决办法。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/11/Hexo%E4%BD%BF%E7%94%A8%E5%A4%87%E5%BF%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lin Zhu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lzhu's pub">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/11/Hexo%E4%BD%BF%E7%94%A8%E5%A4%87%E5%BF%98/" class="post-title-link" itemprop="url">Hexo使用备忘</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-03-11 06:27:17" itemprop="dateCreated datePublished" datetime="2020-03-11T06:27:17+08:00">2020-03-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-29 09:36:06" itemprop="dateModified" datetime="2020-06-29T09:36:06+08:00">2020-06-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/test/" itemprop="url" rel="index"><span itemprop="name">test</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>万万没想到一小时后我竟不需要这个文章了。</p>
+<ol>
+<li><p>当我修改了_config.yml 后，想在本地看看效果时：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//Hexo路径下</span><br><span class="line">hexo g === hexo generate  //生成静态文件</span><br><span class="line">hexo s === hexo server    //启动服务器</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当我准备将它发布时：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean   //清除缓存文件和静态文件（public）。已生成的有时因为缓存问题，服务器更新不了主题</span><br><span class="line">hexo g</span><br><span class="line">hexo d ===hexo deploy //发布</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lin Zhu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
   </aside>
-</main>
+  <div id="sidebar-dimmer"></div>
 
 
-  <footer>
-  <div class="copyright">
-    <div>
-      &copy;
-      2020 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
-    </div>
-    <div>
-      | Product by ZhuLin
-    </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lin Zhu</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
   </div>
-</footer>
 
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
 
 </body>
 </html>
