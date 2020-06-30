@@ -1,8 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>webpack（二）--Loader</title>
+    <url>/2020/06/30/webpack%EF%BC%88%E4%BA%8C%EF%BC%89Loader/</url>
+    <content><![CDATA[<p>打包静态文件</p>
+<h1 id="Loader"><a href="#Loader" class="headerlink" title="Loader"></a>Loader</h1><blockquote>
+<p>前序问题：</p>
+<ol>
+<li>webpack 是什么？</li>
+<li>模块是什么</li>
+<li>webpack 配置文件的作用是什么？</li>
+</ol>
+</blockquote>
+<p>回答：1.webpack 是模块打包工具。</p>
+<ol start="2">
+<li>模块是项目中的 js 文件、css、或者是一张图片等。</li>
+<li>配置文件是配置如何去打包模块</li>
+</ol>
+<h2 id="打包图片文件"><a href="#打包图片文件" class="headerlink" title="打包图片文件"></a>打包图片文件</h2><p>webpack 可以打包 js 文件，但是非 js 文件需要手动在模块中定义如何打包。以 jpg 文件为例，看代码中如何配置.其他类型的文件同理，需要用对应的 loader 去配置</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">[webpack.config.js];</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.jpg$/</span>,</span><br><span class="line">        use: &#123;</span><br><span class="line">          loader: <span class="string">"file-loader"</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>module 是个对象，包含的 rules 是数组，数组中定义了以 jpg 结尾的文件名（正则表达式），这样的文件用<code>file-loader</code>这个 loader 来打包。</p>
+<p>当然，需要用 npm 安装这个 file-loader。</p>
+<blockquote>
+<p>file-loader 做了什么？</p>
+<p>它发现有.jpg 结尾的文件后，就把它打包移动到 output 目录(这里是 dist)并重命名（名字也可以在配置文件中自定义）。得到图片名称后，会把名字作为返回值，返回给引入模块的变量中。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">[index.js];</span><br><span class="line"><span class="keyword">var</span> Header = <span class="built_in">require</span>(<span class="string">"./header.js"</span>);</span><br><span class="line"><span class="keyword">var</span> Sidebar = <span class="built_in">require</span>(<span class="string">"./sidebar.js"</span>);</span><br><span class="line"><span class="keyword">var</span> Content = <span class="built_in">require</span>(<span class="string">"./content.js"</span>);</span><br><span class="line"><span class="keyword">var</span> avatar = <span class="built_in">require</span>(<span class="string">"./avatar.jpg"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(avatar);</span><br><span class="line"><span class="comment">//打包后在dist中的图片名称：\dist\e49823921af3dad34a48ed93700b95ac.jpg</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Header();</span><br><span class="line"><span class="keyword">new</span> Sidebar();</span><br><span class="line"><span class="keyword">new</span> Content();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">img.src = avatar;</span><br><span class="line"><span class="keyword">var</span> root = <span class="built_in">document</span>.getElementById(<span class="string">"root"</span>);</span><br><span class="line">root.appendChild(img);</span><br></pre></td></tr></table></figure>
+
+<p>vue 文件同理要用 vue-loader</p>
+<h3 id="自定义静态文件打包后的名字-路径等信息"><a href="#自定义静态文件打包后的名字-路径等信息" class="headerlink" title="自定义静态文件打包后的名字/路径等信息"></a>自定义静态文件打包后的名字/路径等信息</h3><p>通过配置 loader 的 option 参数。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">        test: <span class="regexp">/\.jpg$/</span>,</span><br><span class="line">        use: &#123;</span><br><span class="line">          loader: <span class="string">"file-loader"</span>,</span><br><span class="line">          options: &#123;</span><br><span class="line">            <span class="comment">//name就是图片文件本身的name</span></span><br><span class="line">            <span class="comment">//ext是图片本身的后缀</span></span><br><span class="line">            name: <span class="string">"[name].[ext]"</span>,</span><br><span class="line">            outputPath: <span class="string">"images/"</span>, <span class="comment">//打包到dist下的images文件夹下</span></span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
+
+<p><code>name: &quot;[name].[ext]&quot;</code>这种语法叫 placeholder 占位符。在官网可以查到各种占位符如[hash]等等。</p>
+<h3 id="url-loader"><a href="#url-loader" class="headerlink" title="url-loader"></a>url-loader</h3><p>这个 loader 同样可以打包 jpg|png|gif 等图片文件,但不是把图片打包到 dist 文件夹的方式，而是把图片转换为 base64 编码，直接放入 bundle.js 文件中。节省一次 http 请求，但会浪费加载时间。</p>
+<p><strong>所以 url-loader 有一个配置 limit，如果图片大于 limit，就打包成图片文件，如果小于 limit，就打包到 bundle.js 中，配置如下：</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//rules</span></span><br><span class="line">&#123;</span><br><span class="line">        test: <span class="regexp">/\.jpg$/</span>,</span><br><span class="line">        use: &#123;</span><br><span class="line">          loader: <span class="string">"file-loader"</span>,</span><br><span class="line">          options: &#123;</span><br><span class="line">            <span class="comment">//name就是图片文件本身的name</span></span><br><span class="line">            <span class="comment">//ext是图片本身的后缀</span></span><br><span class="line">            name: <span class="string">"[name].[ext]"</span>,</span><br><span class="line">            outputPath: <span class="string">"images/"</span>, <span class="comment">//打包到dist下的images文件夹下</span></span><br><span class="line">            limit : <span class="number">10240</span> <span class="comment">//10kb</span></span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
+
+<h2 id="打包样式文件"><a href="#打包样式文件" class="headerlink" title="打包样式文件"></a>打包样式文件</h2><p>需要用到 [“style-loader”, “css-loader”]</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//module</span></span><br><span class="line">&#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [<span class="string">"style-loader"</span>, <span class="string">"css-loader"</span>],</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>css-loader：分析出几个 css 文件之间的关系，最终把这几个 css 文件合并成一段 css。</p>
+<p>style-loader：把 css-loader 生成的 css 代码片段挂载到页面的 header 部分。</p>
+<h3 id="scss-less-stylus"><a href="#scss-less-stylus" class="headerlink" title="scss less stylus"></a>scss less stylus</h3><p>.scss 结尾的需要额外的 sass-loader 去把.scss 文件翻译成 css 文件</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//module</span></span><br><span class="line">&#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [<span class="string">"style-loader"</span>, <span class="string">"css-loader"</span> , <span class="string">"sass-loader"</span>],</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
+
+<p><strong>loader 的执行是有顺序的， 顺序是从下到上，从右到左</strong></p>
+<h3 id="自动添加厂商前缀"><a href="#自动添加厂商前缀" class="headerlink" title="自动添加厂商前缀"></a>自动添加厂商前缀</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//module</span></span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [<span class="string">"style-loader"</span>, <span class="string">"css-loader"</span>, <span class="string">"sass-loader"</span>, <span class="string">"postcss-loader"</span>],</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>通过查看 webpack 官网的 loader，发现 postcss-loader 需要配置文件。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">[postcss.config.js];</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">//使用了autoprefixer来自动添加厂商前缀</span></span><br><span class="line">  plugins: [<span class="built_in">require</span>(<span class="string">"autoprefixer"</span>)],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>并安装这个 autoprefixer 插件，就可以实现自动添加厂商前缀的效果了，可以在打包后的 html 文件用浏览器打开查看。</p>
+<h3 id="css-loader-中的-importLoaders"><a href="#css-loader-中的-importLoaders" class="headerlink" title="css-loader 中的 importLoaders"></a><strong>css-loader 中的 importLoaders</strong></h3><ul>
+<li>官网解释：</li>
+</ul>
+<h4 id="importLoaders"><a href="#importLoaders" class="headerlink" title="importLoaders"></a><code>importLoaders</code></h4><p>查询参数 <code>importLoaders</code>，用于配置「<code>css-loader</code> 作用于 <code>@import</code> 的资源之前」有多少个 loader。</p>
+<p><strong>webpack.config.js</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">  use: [</span><br><span class="line">    <span class="string">'style-loader'</span>,</span><br><span class="line">    &#123;</span><br><span class="line">      loader: <span class="string">'css-loader'</span>,</span><br><span class="line">      options: &#123;</span><br><span class="line">        importLoaders: <span class="number">2</span> <span class="comment">// 0 =&gt; 无 loader(默认); 1 =&gt; postcss-loader; 2 =&gt; postcss-loader, sass-loader</span></span><br><span class="line">        modules : <span class="literal">true</span> <span class="comment">//开启模块化打包，下小结详细讲解</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">'postcss-loader'</span>,</span><br><span class="line">    <span class="string">'sass-loader'</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在模块系统（即 webpack）支持原始 loader 匹配后，此功能可能在将来会发生变化。</p>
+<ul>
+<li>适用情况：</li>
+</ul>
+<p>当一个 scss 文件中@import 了新的 scss 文件，此时对原文件的打包已经按顺序加载到了 css-loader 的功能，引入的 scss 文件用 css-loader 加载就会出错。这个<code>importLoaders</code>用来使引入的 scss 文件依然从 sass-loader 开始加载。</p>
+<h3 id="css-打包的模块化"><a href="#css-打包的模块化" class="headerlink" title="css 打包的模块化"></a>css 打包的模块化</h3><p>在入口文件中引入的样式文件会作用在全局，可能会出现意外的样式覆盖问题，所以引入 css 模块化概念。</p>
+<p>只需要加一句<code>modules:true</code>即可开启。</p>
+<p>对应的，在入口文件中也需做修改，<strong>注意：如果依然按全局引入的话样式会不生效。</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">[index.js]入口文件</span><br><span class="line"><span class="keyword">import</span> avatar <span class="keyword">from</span> <span class="string">"./avatar.jpg"</span>;</span><br><span class="line"><span class="keyword">import</span> Avatar <span class="keyword">from</span> <span class="string">"./avatar"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//import "./avatar"; //在这里引入的样式作用在全局,容易出现样式冲突</span></span><br><span class="line"><span class="keyword">import</span> style <span class="keyword">from</span> <span class="string">"./index.scss"</span>; <span class="comment">//使用模块化的css，配合css-loader的option：&#123;modules:true&#125;</span></span><br><span class="line"></span><br><span class="line">Avatar();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> root = <span class="built_in">document</span>.getElementById(<span class="string">"root"</span>);</span><br><span class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">img.classList.add(style.avatar); <span class="comment">//模块引入的使用方法</span></span><br><span class="line"><span class="comment">//img.classList.add("avatar"); //全局引入的使用方法</span></span><br><span class="line">img.src = avatar;</span><br><span class="line">root.append(img);</span><br><span class="line"></span><br><span class="line">打包后：</span><br><span class="line">&lt;img <span class="class"><span class="keyword">class</span></span>=<span class="string">"_17cnVz87yzSOO5TpFdnLsk"</span> src=<span class="string">"images/avatar.jpg"</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在其他 js 文件中使用同理。</p>
+<h2 id="打包字体文件"><a href="#打包字体文件" class="headerlink" title="打包字体文件"></a>打包字体文件</h2><p>如 iconfont 的<code>eot .ttf .svg .woff</code>等，需要额外的 loader 去进行打包。这里使用的是 file-loader。配置与 url-loader 类似。</p>
+<p>最后附上完整文件，<a href="https://github.com/pblossom/webpack-practice" target="_blank" rel="noopener">github 地址</a></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">[webpack.config.js];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  mode: <span class="string">"development"</span>, <span class="comment">//添加mode，否则在打包时会有警告，默认值是 production</span></span><br><span class="line">  entry: &#123; <span class="attr">main</span>: <span class="string">"./src/index.js"</span> &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">"bundle.js"</span>,</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">"dist"</span>), <span class="comment">//这里必须使用绝对路径，所以引入node的核心模块path，生成一个绝对路径，__diename就是当前文件所在目录</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.(jpg|png|gif)$/</span>,</span><br><span class="line">        use: &#123;</span><br><span class="line">          loader: <span class="string">"url-loader"</span>,</span><br><span class="line">          options: &#123;</span><br><span class="line">            name: <span class="string">"[name].[ext]"</span>,</span><br><span class="line">            outputPath: <span class="string">"images/"</span>, <span class="comment">//打包到dist下的images文件夹下</span></span><br><span class="line">            limit: <span class="number">10240</span>, <span class="comment">//limit  图片小于10k则变成base64写入bundle.js，大于10k则单独打包到image文件夹中</span></span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.(eot|ttf|svg|woff)$/</span>,</span><br><span class="line">        use: &#123;</span><br><span class="line">          loader: <span class="string">"file-loader"</span>,</span><br><span class="line">          options: &#123;</span><br><span class="line">            name: <span class="string">"[name].[ext]"</span>,</span><br><span class="line">            outputPath: <span class="string">"font/"</span>, <span class="comment">//打包到dist下的font文件夹下</span></span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.scss$/</span>,</span><br><span class="line">        use: [</span><br><span class="line">          <span class="string">"style-loader"</span>,</span><br><span class="line">          &#123;</span><br><span class="line">            loader: <span class="string">"css-loader"</span>,</span><br><span class="line">            options: &#123;</span><br><span class="line">              <span class="comment">//配置「`css-loader 作用于 `@import` 的资源之前」有多少个 loader。</span></span><br><span class="line">              importLoaders: <span class="number">2</span>, <span class="comment">// 0 =&gt; 无 loader(默认); 1 =&gt; postcss-loader; 2 =&gt; postcss-loader, sass-loader</span></span><br><span class="line">              <span class="comment">//modules: true,</span></span><br><span class="line">            &#125;,</span><br><span class="line">          &#125;,</span><br><span class="line">          <span class="string">"postcss-loader"</span>,</span><br><span class="line">          <span class="string">"sass-loader"</span>,</span><br><span class="line">        ],</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>webpack</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>webpack（一）--基础知识</title>
-    <url>/2020/06/30/webpack%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    <url>/2020/06/30/webpack%EF%BC%88%E4%B8%80%EF%BC%89%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
     <content><![CDATA[<p>来嗑打包工具</p>
 <h2 id="基础三连"><a href="#基础三连" class="headerlink" title="基础三连"></a>基础三连</h2><ol>
 <li>是什么？</li>
